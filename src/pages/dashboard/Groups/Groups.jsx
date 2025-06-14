@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import photo from '../../../assets/gilos.png';
-import { CaretDownOutlined, DashOutlined } from '@ant-design/icons';
+import { CaretDownOutlined, DashOutlined, PlusOutlined } from '@ant-design/icons';
 
 const Groups = () => {
   const { id } = useParams();
@@ -47,12 +47,27 @@ const Groups = () => {
         </div>
       </div>
       <div className="flex justify-between px-5 h-screen">
-        <div className="bg-white text-black shadow-lg rounded-t-[12px] w-[580px] px-4 py-3">
+        <div className="bg-white text-black shadow-lg flex justify-between rounded-t-[12px] w-[580px] px-4 py-3">
           <h2 className="text-2xl font-semibold">items <span className="bg-blue-600 w-36 h-20 px-3 text-white rounded-[8px]">0</span></h2>
+          <div className='flex gap-2'>
+          <input className='h-9 w-48 border border-gray-300 px-2 py-2 rounded' placeholder='Title' type="text" />
+          <div className='bg-blue-600 text-white rounded-[8px] w-9 h-9 flex items-center justify-center'>
+          <PlusOutlined />
+          </div>
+          </div>
         </div>
         
         <div className="bg-white text-black shadow-lg rounded-t-[12px] w-[580px] px-4 py-3">
-          <h2 className="text-2xl font-semibold">Members <span className="bg-blue-600 w-36 h-20 px-3 text-white rounded-[8px]">1</span></h2>
+          <h2 className="text-2xl font-semibold mb-2">Members <span className="bg-blue-600 w-36 h-20 px-3 text-white rounded-[8px]">1</span></h2>
+          <div className='flex gap-2 w-full items-center h-16 border rounded border-gray-300  py-1 px-3'>
+            <div className='bg-blue-600 text-white rounded-[8px] w-10 h-8 flex items-center justify-center'>
+            <h2 className='text-[18px] font-bold'>{group?.owner?.name[0]?.toUpperCase()}</h2>
+            </div>
+            <div className='flex flex-col'>
+            <h2>{group?.owner?.name}</h2>
+            <h2 className='opacity-45'>{group?.owner?.username}</h2>
+            </div>
+          </div>
         </div>
       </div>
     </div>
